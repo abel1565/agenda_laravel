@@ -51,7 +51,10 @@ class UserCreateModal extends Component
         }
 
         // Avisar a PowerGrid que refresque la tabla
-        $this->dispatch('pg:eventRefresh-default'); 
+        $this->dispatch('pg:eventRefresh-default');
+        $this->dispatch('pg:eventRefresh-userTable');
+        
+        $this->dispatch('user-created', userId: $user->id); 
         
         session()->flash('message', 'Usuario creado con éxito.');
 

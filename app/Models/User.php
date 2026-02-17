@@ -56,4 +56,12 @@ class User extends Authenticatable
     public function status(){
         return $this->belongsTo(Status::class);
     }
+    //relacion con las citas que crea el usuario 
+    public function citasCreated(){
+        return $this->hasMany(Citas::class, 'createdby');
+    }
+    //relacion con las citas que tiene asignadas el usuario 
+    public function citasAssigned(){
+        return $this->hasMany(Citas::class, 'assignedto');
+    }
 }
